@@ -1,0 +1,84 @@
+/* TOP BAR */
+#topBar {
+    -fx-background-color: #2758B0;
+    -fx-alignment: center-left;
+}
+
+#topTitle {
+    -fx-text-fill: white;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+#logoutBtn {
+    -fx-background-color: white;
+    -fx-text-fill: #2758B0;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 5 18;
+}
+
+/* SIDEBAR */
+#sideBar {
+    -fx-background-color: #1D3E80;
+    -fx-spacing: 20;
+}
+
+.side-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 12;
+    -fx-background-radius: 10;
+}
+
+.side-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.25);
+}
+
+/* MAIN CENTER AREA */
+.section {
+    -fx-padding: 20;
+    -fx-background-color: #F7F9FC;
+}
+
+.section-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+/* SCROLL PANE */
+.scroll-area {
+    -fx-background-color: transparent;
+}
+
+/* BUTTON THEMES */
+.primary-btn {
+    -fx-background-color: #2758B0;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.success-btn {
+    -fx-background-color: #34A853;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.danger-btn {
+    -fx-background-color: #EA4335;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+/* CARD STYLE (لما هنسوي الكروت) */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8,0,0,2);
+}

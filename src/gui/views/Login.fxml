@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="gui.controllers.LoginController"
+           prefWidth="800" prefHeight="600">
+
+    <children>
+
+        <!-- ===== Background Image ===== -->
+        <ImageView fitWidth="800" fitHeight="600" preserveRatio="false">
+            <image>
+                <!-- Use classpath resource: place the image at src/main/resources/images/login.jpeg -->
+                <Image url="@/images/login.jpeg"/>
+            </image>
+        </ImageView>
+        <!-- ===== Transparent White Card ===== -->
+        <StackPane maxWidth="450" maxHeight="350"
+                   style="-fx-background-color: rgba(255,255,255,0.75);
+                          -fx-background-radius: 20;
+                          -fx-padding: 30;">
+
+            <!-- ===== Login Form ===== -->
+            <VBox alignment="CENTER" spacing="15" maxWidth="400">
+
+                <Label text="Login" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+
+                <TextField fx:id="usernameField" promptText="Username" maxWidth="300"/>
+                <PasswordField fx:id="passwordField" promptText="Password" maxWidth="300"/>
+
+                <Button fx:id="loginButton" text="Login" maxWidth="150"
+                        style="-fx-background-color: #054561; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+                <Label fx:id="errorLabel" textFill="red" style="-fx-font-size: 14px;" />
+
+                <HBox alignment="CENTER" spacing="5">
+                    <Label text="Don't have an account?" />
+                    <Hyperlink fx:id="registerLink" text="Register here" />
+                </HBox>
+
+            </VBox>
+        </StackPane>
+
+    </children>
+</StackPane>

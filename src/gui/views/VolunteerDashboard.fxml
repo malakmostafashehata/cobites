@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.controllers.VolunteerDashboardController"
+            stylesheets="@dashboard.css">
+
+    <!-- ===================== TOP BAR ===================== -->
+    <top>
+        <VBox spacing="10" styleClass="top-bar">
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="profile-bar">
+
+                <VBox spacing="2">
+                    <Label fx:id="lblWelcome" text="WELCOME TO COBITES" styleClass="welcome-label"/>
+                    <Label fx:id="lblVolunteerName" text="Volunteer Name" styleClass="header-label"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Profile Menu -->
+                <MenuButton fx:id="profileMenu" text="Profile">
+                    <items>
+                        <MenuItem fx:id="menuEditProfile" text="Edit Profile"/>
+                        <MenuItem fx:id="menuLogout" text="Logout"/>
+                    </items>
+                </MenuButton>
+
+                <!-- Exit button -->
+                <Button fx:id="btnExit" text="Exit" styleClass="btn-red"/>
+            </HBox>
+
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        </VBox>
+    </top>
+
+
+    <!-- ===================== LEFT FILTER PANEL ===================== -->
+    <left>
+        <!-- NEW OUTER PANEL -->
+        <VBox styleClass="left-panel">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+
+            <!-- INNER FILTER BOX -->
+            <VBox spacing="15" styleClass="filter-box">
+
+                <Label text="Search / Filter" styleClass="filter-title"/>
+
+                <TextField fx:id="txtSearch" promptText="Search donations..." styleClass="input-field"/>
+
+                <ComboBox fx:id="cbTypeFilter" promptText="Select type" styleClass="input-field"/>
+
+                <HBox spacing="10">
+                    <Button fx:id="btnRefresh" text="Refresh" styleClass="btn-blue"/>
+                    <Button fx:id="btnExportCSV" text="Export CSV" styleClass="btn-orange" onAction="#exportCsv"/>
+                </HBox>
+
+            </VBox>
+        </VBox>
+    </left>
+
+
+    <!-- ===================== CENTER CARDS ===================== -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox fx:id="cardsContainer" spacing="15">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+
+    <!-- ===================== BOTTOM PANEL ===================== -->
+    <bottom>
+        <HBox fx:id="bottomPanel" spacing="10" alignment="CENTER_LEFT">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+
+            <Label fx:id="statusLabel" text="READY" styleClass="status-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/> <!-- Spacer -->
+
+            <Button fx:id="btnAddDonation" text="Add Donation" styleClass="btn-green"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

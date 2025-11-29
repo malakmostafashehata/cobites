@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="gui.controllers.EditProfileController"
+      spacing="15" alignment="TOP_CENTER"
+      style="-fx-padding: 20; -fx-background-color: #162447;"
+      stylesheets="@dashboard.css">
+
+    <!-- Title -->
+    <Label text="Edit Profile"
+           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+    <!-- Form Grid -->
+    <GridPane hgap="15" vgap="12">
+        <!-- Name -->
+        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+        <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                   style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+
+        <!-- Password -->
+        <Label text="Password:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+        <PasswordField fx:id="txtPassword" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                       style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+
+        <!-- Address -->
+        <Label text="Address:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+        <TextField fx:id="txtAddress" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                   style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+    </GridPane>
+
+    <!-- Status Label -->
+    <Label fx:id="lblStatus" text="" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+
+    <!-- Buttons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button fx:id="btnSave" text="Save"
+                style="-fx-background-color: #162447; -fx-text-fill: white; -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
+        <Button fx:id="btnDelete" text="Delete Account"
+                style="-fx-background-color: #162447; -fx-text-fill: white; -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
+        <Button fx:id="btnLogout" text="Logout"
+                style="-fx-background-color: #162447; -fx-text-fill: white; -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
+    </HBox>
+
+</VBox>
+

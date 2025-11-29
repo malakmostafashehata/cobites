@@ -7,8 +7,8 @@ import java.util.List;
 public class Charity extends User {
     private List<Order> orders = new ArrayList<>();
 
-    public Charity(String userName, String password, String name, String address) {
-        super(userName, password, name, address, Role.CHARITY);
+    public Charity(String userName, String password, String name, String address,String phone ) {
+        super(userName, password, name, address, Role.CHARITY, phone);
     }
 
     public void addOrder(Order order, NotificationManager nm) {

@@ -20,13 +20,19 @@
 
                 <Region HBox.hgrow="ALWAYS"/>
 
-                <!-- Profile Menu -->
-                <MenuButton fx:id="profileMenu" text="Profile">
-                    <items>
-                        <MenuItem fx:id="menuEditProfile" text="Edit Profile"/>
-                        <MenuItem fx:id="menuLogout" text="Logout"/>
-                    </items>
-                </MenuButton>
+               <HBox spacing="10" alignment="CENTER_RIGHT">
+
+    <Button fx:id="btnEditProfile"
+            text=" Profile"
+            style="-fx-background-color:#162447 ;  -fx-font-weight: bold;-fx-text-fill: white ;
+                    "/>
+
+    <Button fx:id="btnLogout"
+            text="Logout"
+            style="-fx-background-color: #c0392b; -fx-text-fill: white;
+                   -fx-background-radius: 5; -fx-padding: 5 12;"/>
+
+</HBox>
 
                 <!-- Exit button -->
                 <Button fx:id="btnExit" text="Exit" styleClass="btn-red"/>

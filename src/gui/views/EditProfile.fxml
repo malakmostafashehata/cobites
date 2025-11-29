@@ -12,22 +12,33 @@
     <Label text="Edit Profile"
            style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
 
-    <!-- Form Grid -->
-    <GridPane hgap="15" vgap="12">
-        <!-- Name -->
-        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
-        <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"
+   <GridPane hgap="15" vgap="12">
+    <!-- Username -->
+    <Label text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+    <TextField fx:id="txtUsername" GridPane.rowIndex="0" GridPane.columnIndex="1"
+               style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+
+    <!-- Display Name -->
+    <Label text="Display Name:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+    <TextField fx:id="txtName" GridPane.rowIndex="1" GridPane.columnIndex="1"
+               style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+
+    <!-- Password -->
+    <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+    <PasswordField fx:id="txtPassword" GridPane.rowIndex="2" GridPane.columnIndex="1"
                    style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
 
-        <!-- Password -->
-        <Label text="Password:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
-        <PasswordField fx:id="txtPassword" GridPane.rowIndex="1" GridPane.columnIndex="1"
-                       style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+    <!-- Address -->
+    <Label text="Address:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+    <TextField fx:id="txtAddress" GridPane.rowIndex="3" GridPane.columnIndex="1"
+               style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
 
-        <!-- Address -->
-        <Label text="Address:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
-        <TextField fx:id="txtAddress" GridPane.rowIndex="2" GridPane.columnIndex="1"
-                   style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+    <!-- Phone -->
+    <Label text="Phone:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-text-fill: white;"/>
+    <TextField fx:id="txtPhone" GridPane.rowIndex="4" GridPane.columnIndex="1"
+               style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC; -fx-background-color: transparent;"/>
+</GridPane>
+
     </GridPane>
 
     <!-- Status Label -->
@@ -39,9 +50,7 @@
                 style="-fx-background-color: #162447; -fx-text-fill: white; -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
         <Button fx:id="btnDelete" text="Delete Account"
                 style="-fx-background-color: #162447; -fx-text-fill: white; -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
-        <Button fx:id="btnLogout" text="Logout"
-                style="-fx-background-color: #162447; -fx-text-fill: white; -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
-    </HBox>
+           </HBox>
 
 </VBox>
 

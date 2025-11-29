@@ -10,7 +10,7 @@ public class DeliveryPerson extends User {
     private List<Order> assignedOrders = new ArrayList<>();
 
     public DeliveryPerson(String userName, String password, String name, String address, String phone) {
-        super(userName, password, name, address, Role.DELIVERY);
+        super(userName, password, name, address, Role.DELIVERY, phone);
         this.phone = phone;
     }
 

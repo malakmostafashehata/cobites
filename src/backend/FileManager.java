@@ -14,25 +14,35 @@ public class FileManager {
         return notificationManager;
     }
 
-    // ================== Users ==================
+ // ================== Save Users ==================
     public static void saveUsers(List<User> users) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(USERS_FILE))) {
             for (User u : users) {
-                if (u instanceof PersonVolunteer pv) {
-                    pw.println("PersonVolunteer|" + pv.getUserName() + "|" + pv.getPassword() + "|" +
-                            pv.getName() + "|" + pv.getAddress() + "|" + pv.getPhone());
-                } else if (u instanceof RestaurantVolunteer rv) {
-                    pw.println("RestaurantVolunteer|" + rv.getUserName() + "|" + rv.getPassword() + "|" +
-                            rv.getName() + "|" + rv.getAddress() + "|" + rv.getRestaurantName() + "|" + rv.getPhone());
-                } else if (u instanceof HotelVolunteer hv) {
-                    pw.println("HotelVolunteer|" + hv.getUserName() + "|" + hv.getPassword() + "|" +
-                            hv.getName() + "|" + hv.getAddress() + "|" + hv.getHotelName() + "|" + hv.getPhone());
+            	if (u instanceof PersonVolunteer pv) {
+            	    pw.println("PersonVolunteer|" + pv.getUserName() + "|" + pv.getPassword() + "|" +
+            	               pv.getName() + "|" + pv.getAddress() + "|" +
+            	               (pv.getPhone() != null ? pv.getPhone() : ""));
+            	} else if (u instanceof RestaurantVolunteer rv) {
+            	    pw.println("RestaurantVolunteer|" + rv.getUserName() + "|" + rv.getPassword() + "|" +
+            	               rv.getName() + "|" + rv.getAddress() + "|" + rv.getRestaurantName() + "|" +
+            	               (rv.getPhone() != null ? rv.getPhone() : ""));
+            	} else if (u instanceof HotelVolunteer hv) {
+            	    pw.println("HotelVolunteer|" + hv.getUserName() + "|" + hv.getPassword() + "|" +
+            	               hv.getName() + "|" + hv.getAddress() + "|" + hv.getHotelName() + "|" +
+            	               (hv.getPhone() != null ? hv.getPhone() : ""));
+            	} else if (u instanceof DeliveryPerson d) {
+            	    pw.println("Delivery|" + d.getUserName() + "|" + d.getPassword() + "|" +
+            	               d.getName() + "|" + d.getAddress() + "|" +
+            	               (d.getPhone() != null ? d.getPhone() : ""));
+            	
                 } else if (u instanceof Charity c) {
                     pw.println("Charity|" + c.getUserName() + "|" + c.getPassword() + "|" +
-                            c.getName() + "|" + c.getAddress());
+                            c.getName() + "|" + c.getAddress() + "|" +
+                            (c.getPhone() != null ? c.getPhone() : ""));
                 } else if (u instanceof DeliveryPerson d) {
                     pw.println("Delivery|" + d.getUserName() + "|" + d.getPassword() + "|" +
-                            d.getName() + "|" + d.getAddress() + "|" + d.getPhone());
+                            d.getName() + "|" + d.getAddress() + "|" +
+                            (d.getPhone() != null ? d.getPhone() : ""));
                 } else if (u instanceof Admin a) {
                     pw.println("Admin|" + a.getUserName() + "|" + a.getPassword() + "|" +
                             a.getName() + "|" + a.getAddress());
@@ -43,6 +53,7 @@ public class FileManager {
         }
     }
 
+    // ================== Load Users ==================
     public static Map<String, User> loadUsers() {
         Map<String, User> userMap = new HashMap<>();
         File file = new File(USERS_FILE);
@@ -53,48 +64,40 @@ public class FileManager {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 if (parts.length < 4) continue;
+
                 switch (parts[0]) {
-                    case "PersonVolunteer" -> {
-                        if (parts.length >= 6) {
-                            PersonVolunteer pv = new PersonVolunteer(parts[1], parts[2], parts[3], parts[4], parts[5]) {
-                                @Override public void setName(String text) { this.name = text; }
-                                @Override public void setPassword(String text) { this.password = text; }
-                                @Override public void setAddress(String text) { this.address = text; }
-                            };
-                            userMap.put(parts[1], pv);
-                        }
-                    }
-                    case "RestaurantVolunteer" -> {
-                        if (parts.length >= 7) {
-                            RestaurantVolunteer rv = new RestaurantVolunteer(parts[1], parts[2], parts[3], parts[4], parts[5], parts[6]) {
-                                @Override public void setName(String text) { this.name = text; }
-                                @Override public void setPassword(String text) { this.password = text; }
-                                @Override public void setAddress(String text) { this.address = text; }
-                            };
-                            userMap.put(parts[1], rv);
-                        }
-                    }
-                    case "HotelVolunteer" -> {
-                        if (parts.length >= 7) {
-                            HotelVolunteer hv = new HotelVolunteer(parts[1], parts[2], parts[3], parts[4], parts[5], parts[6]) {
-                                @Override public void setName(String text) { this.name = text; }
-                                @Override public void setPassword(String text) { this.password = text; }
-                                @Override public void setAddress(String text) { this.address = text; }
-                            };
-                            userMap.put(parts[1], hv);
-                        }
-                    }
+                case "PersonVolunteer" -> {
+                    String phone = parts.length >= 6 ? parts[5] : "";
+                    PersonVolunteer pv = new PersonVolunteer(parts[1], parts[2], parts[3], parts[4], phone);
+                    userMap.put(parts[1], pv);
+                }
+
+                case "RestaurantVolunteer" -> {
+                    String restaurantName = parts[5];
+                    String phone = parts.length >= 7 ? parts[6] : "";
+                    RestaurantVolunteer rv = new RestaurantVolunteer(parts[1], parts[2], parts[3], parts[4], restaurantName, phone);
+                    userMap.put(parts[1], rv);
+                }
+
+                case "HotelVolunteer" -> {
+                    String hotelName = parts[5];
+                    String phone = parts.length >= 7 ? parts[6] : "";
+                    HotelVolunteer hv = new HotelVolunteer(parts[1], parts[2], parts[3], parts[4], hotelName, phone);
+                    userMap.put(parts[1], hv);
+                }
 
                     case "Charity" -> {
-                        Charity c = new Charity(parts[1], parts[2], parts[3], parts[4]);
+                        String phone = parts.length >= 5 && !parts[4].equals("null") ? parts[4] : "";
+                        Charity c = new Charity(parts[1], parts[2], parts[3], parts[4], phone);
                         userMap.put(parts[1], c);
                     }
                     case "Delivery" -> {
-                        DeliveryPerson d = new DeliveryPerson(parts[1], parts[2], parts[3], parts[4], parts.length > 5 ? parts[5] : "");
+                        String phone = parts.length >= 5 && !parts[4].equals("null") ? parts[4] : "";
+                        DeliveryPerson d = new DeliveryPerson(parts[1], parts[2], parts[3], parts[4], phone);
                         userMap.put(parts[1], d);
                     }
                     case "Admin" -> {
-                        Admin a = new Admin(parts[1], parts[2], parts[3]);
+                        Admin a = new Admin(parts[1], parts[2], parts[3], parts[4]);
                         userMap.put(parts[1], a);
                     }
                 }
@@ -102,8 +105,10 @@ public class FileManager {
         } catch (Exception e) {
             System.err.println("Error loading users: " + e.getMessage());
         }
+
         return userMap;
     }
+
 
     // ================== Donations ==================
     public static void saveDonation(Donation d) {

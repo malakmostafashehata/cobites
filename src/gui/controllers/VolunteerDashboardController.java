@@ -21,20 +21,18 @@ import java.io.File;
 import java.time.format.DateTimeFormatter;
 
 public class VolunteerDashboardController {
-
+	@FXML private Button btnEditProfile;
+	@FXML private Button btnLogout;
     @FXML private VBox cardsContainer;
     @FXML private Label lblWelcome;
     @FXML private Label lblVolunteerName;
-    @FXML private Button btnLogout;
     @FXML private Button btnAddDonation;
     @FXML private Button btnExportCSV;
     @FXML private Button btnExit;
     @FXML private TextField txtSearch;
     @FXML private ComboBox<FoodType> cbTypeFilter;
     @FXML private Label statusLabel;
-    @FXML private MenuButton profileMenu;
-    @FXML private MenuItem menuEditProfile;
-    @FXML private MenuItem menuLogout;
+   
 
     private Volunteer volunteer;
     private NotificationManager notificationManager;
@@ -55,10 +53,10 @@ public class VolunteerDashboardController {
         cbTypeFilter.getItems().setAll(FoodType.values());
         cbTypeFilter.getItems().add(0, null);
         cbTypeFilter.valueProperty().addListener((obs, oldV, newV) -> applyFilters());
-
-        menuEditProfile.setOnAction(e -> openEditProfile());
         btnExit.setOnAction(e -> System.exit(0));
-        menuLogout.setOnAction(e -> logout());
+        btnEditProfile.setOnAction(e -> openEditProfile());
+        btnLogout.setOnAction(e -> logout());
+
 
         // Add donation
         btnAddDonation.setOnAction(e -> openDonationForm(null));
@@ -99,14 +97,22 @@ public class VolunteerDashboardController {
             Stage stage = new Stage();
             stage.setTitle("Edit Profile");
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.showAndWait();  // هذا ينتظر لغاية ما الفورم يغلق
 
+            // بعد اغلاق الفورم، حدث الاسم ورقم الهاتف على الـ Dashboard
             lblVolunteerName.setText(volunteer.getName());
+
+            // لو عندك Label للـ phone، حدثه هنا
+            Label lblPhone = (Label) cardsContainer.getScene().lookup("#lblPhone");
+            if (lblPhone != null) {
+                lblPhone.setText(volunteer.getPhone());
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     private HBox createCard(FoodItem item) {
         HBox card = new HBox(10);

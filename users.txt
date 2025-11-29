@@ -1,3 +1,0 @@
-Charity|maro|999|mostaf|tyy
-PersonVolunteer|moka|678|mostafa|itlay|000000
-Charity|menna|123|metos|turkey

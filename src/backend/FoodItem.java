@@ -2,17 +2,22 @@ package backend;
 
 import java.time.LocalDate;
 
+// Represents a donated food item
 public class FoodItem {
-    private String id;
-    private String name;
-    private int qty;
-    private String volunteerName;
-    private FoodType type;
-    private String imagePath;
-    private LocalDate donationDate;
+    private String id;                // Unique identifier for the food item
+    private String name;              // Name of the food item
+    private int qty;                  // Quantity of the food item
+    private String volunteerName;     // Name of the volunteer who handled the donation
+    private FoodType type;            // Type/category of the food item
+    private String imagePath;         // Path to the image of the food item
+    private LocalDate donationDate;   // Date when the food item was donated
+    private String donorAddress;      // Address of the donor
+    private String donorPhone;        // Phone number of the donor
 
-    // Constructor
-    public FoodItem(String id, String name, int qty, String volunteerName, FoodType type, String imagePath,LocalDate donationDate){
+    // ===== Constructor =====
+    // Initializes a new FoodItem with all necessary details
+    public FoodItem(String id, String name, int qty, String volunteerName,
+                    FoodType type, String imagePath, LocalDate donationDate) {
         this.id = id;
         this.name = name;
         this.qty = qty;
@@ -21,25 +26,39 @@ public class FoodItem {
         this.imagePath = imagePath;
         this.donationDate = donationDate;
     }
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
+
+    // ===== Getters & Setters =====
+
+    // Get and set donor address
+    public String getDonorAddress() { return donorAddress; }
+    public void setDonorAddress(String donorAddress) { this.donorAddress = donorAddress; }
+
+    // Get and set donor phone
+    public String getDonorPhone() { return donorPhone; }
+    public void setDonorPhone(String donorPhone) { this.donorPhone = donorPhone; }
+
+    // Get and set ID
     public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+    // Get and set name
     public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    // Get and set quantity
     public int getQty() { return qty; }
+    public void setQty(int qty) { this.qty = qty; }
+
+    // Get volunteer name
     public String getVolunteerName() { return volunteerName; }
+
+    // Get and set type
     public FoodType getType() { return type; }
+    public void setType(FoodType type) { this.type = type; }
+
+    // Get image path
     public String getImagePath() { return imagePath; }
+
+    // Get donation date
     public LocalDate getDonationDate() { return donationDate; }
-	public void setImagePath(String imagePath2) {
-		
-	}
-	public void setType(FoodType value) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void setName(String name2) {
-		// TODO Auto-generated method stub
-		
-	}
 }

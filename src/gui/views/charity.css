@@ -1,84 +1,315 @@
-/* TOP BAR */
-#topBar {
-    -fx-background-color: #2758B0;
-    -fx-alignment: center-left;
+/* ===================================================== */
+/*                   MAIN BACKGROUND                     */
+/* ===================================================== */
+.root {
+    -fx-background-color: #054561; /* dark navy like volunteer dashboard */
 }
 
-#topTitle {
-    -fx-text-fill: white;
-    -fx-font-size: 26px;
+/* ===================== TOP BAR ======================= */
+.top-bar,
+.profile-bar,
+#bottomPanel {
+    -fx-background-color: #054561;
+    -fx-padding: 15px;
+}
+
+.welcome-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
-
-#logoutBtn {
+/* ===========================
+   PROFILE TEXTFIELDS — WHITE
+   =========================== */
+#txtProfileName,
+#txtProfileUsername,
+#txtProfilePhone,
+#txtProfilePassword,
+#txtProfileAddress {
     -fx-background-color: white;
-    -fx-text-fill: #2758B0;
-    -fx-font-weight: bold;
+    -fx-text-fill: black;
+
     -fx-background-radius: 8;
-    -fx-padding: 5 18;
+    -fx-border-radius: 8;
+
+    -fx-padding: 6 10;
+    -fx-border-color: transparent; /* No border */
+}
+/* Scrollbar thumb color */
+.scroll .scroll-bar .thumb {
+    -fx-background-color: #1F3B73;
+    -fx-background-radius: 3;
 }
 
-/* SIDEBAR */
-#sideBar {
-    -fx-background-color: #1D3E80;
-    -fx-spacing: 20;
+/* Thumb hover color */
+.scroll .scroll-bar .thumb:hover {
+    -fx-background-color: #2A4B8F;
 }
 
-.side-btn {
+/* (Optional) Make scrollbar track transparent */
+.scroll .scroll-bar {
     -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-size: 15px;
+}
+.header-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-padding: 10 12;
+}
+/* Make all labels inside profile section white */
+#profileSection Label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+/* ===================== LEFT PANEL ==================== */
+.left-panel {
+    -fx-background-color: #054561;
+    -fx-padding: 15px;
+}
+/* FILTER BOX (dark inside block) */
+.filter-box {
+    -fx-background-color: #162447;
+    -fx-padding: 15px;
     -fx-background-radius: 10;
 }
 
-.side-btn:hover {
-    -fx-background-color: rgba(255,255,255,0.25);
+/* Filter title */
+.filter-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+/* Sidebar buttons */
+.side-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 12;
+    -fx-background-radius: 8;
 }
 
-/* MAIN CENTER AREA */
-.section {
+.side-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.2);
+}
+
+/* ===================== RIGHT TOP BUTTONS ============= */
+.btn-profile {
+    -fx-background-color: #162447;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 5 15;
+}
+
+
+.btn-logout {
+    -fx-background-color: #EA4335;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 5 15;
+}
+
+.btn-logout:hover {
+    -fx-background-color: #c0392b;
+}
+.btn-save {
+    -fx-background-color: #2E7D32;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 5 15;
+}
+
+.btn-save:hover {
+    -fx-background-color: #1B5E20;
+}
+
+.btn-exit {
+    -fx-background-color: #7F8C8D;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 5 15;
+}
+
+.btn-submit {
+    -fx-background-color: transparent;   /* Keep background transparent */
+    -fx-text-fill: white;                /* Text color */
+    -fx-font-weight: bold;
+    -fx-border-color: white;             /* White border */
+    -fx-border-width: 1.5;               /* Border thickness */
+    -fx-border-radius: 8;             /* Rounded border */
+    -fx-background-radius: 8;         /* Match rounded shape */
+    -fx-padding: 5 15;                   /* Optional spacing */
+}
+
+
+/* ===================== PRIMARY BUTTONS ================= */
+.btn-profile-style {
+    -fx-background-color: #162447; /* same as Profile button */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 5 15;
+}
+
+.btn-profile-style:hover {
+    -fx-background-color: #1F3B73;
+}
+
+/* ===================== CENTER SECTIONS ================= */
+.center-pane {
+    -fx-background-color: #054561;
+}
+
+.section-pane {
+    -fx-background-color: #054561;
     -fx-padding: 20;
-    -fx-background-color: #F7F9FC;
+    -fx-background-radius: 10;
 }
 
 .section-title {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
-}
-
-/* SCROLL PANE */
-.scroll-area {
-    -fx-background-color: transparent;
-}
-
-/* BUTTON THEMES */
-.primary-btn {
-    -fx-background-color: #2758B0;
     -fx-text-fill: white;
-    -fx-background-radius: 8;
-    -fx-font-weight: bold;
 }
 
-.success-btn {
-    -fx-background-color: #34A853;
+.label-white {
     -fx-text-fill: white;
-    -fx-background-radius: 8;
-    -fx-font-weight: bold;
 }
 
-.danger-btn {
-    -fx-background-color: #EA4335;
-    -fx-text-fill: white;
-    -fx-background-radius: 8;
-    -fx-font-weight: bold;
-}
-
-/* CARD STYLE (لما هنسوي الكروت) */
-.card {
+/* ===================== CARDS ========================== */
+.cards-container HBox,
+.cards-container VBox,
+.cards-container FlowPane > VBox {
     -fx-background-color: white;
     -fx-background-radius: 12;
     -fx-padding: 15;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8,0,0,2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+
+.cards-container VBox:hover,
+.cards-container FlowPane > VBox:hover {
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 10,0,0,2);
+}
+
+/* ===================== INPUTS ========================== */
+.input-field {
+    -fx-background-color: #162447;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #BBBBBB;
+    -fx-border-color: white;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 6 8;
+    -fx-font-weight: bold;
+}
+/* ===================== EXPORT CSV BUTTON ================= */
+
+/* Donations section container */
+#complaintsSection,
+#historySection,
+#profileSection,
+#donationsSection {
+    -fx-background-color: #162447; /* navy background */
+    -fx-background-radius: 12;      /* rounded corners */
+    -fx-border-color: white;        /* border color */
+    -fx-border-width: 2;            /* thickness of the border */
+    -fx-border-radius: 12;          /* border rounds with container */
+    -fx-padding: 15;                /* padding inside section */
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #162447;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-view {
+    -fx-background-color: #162447;
+}
+
+/* Scroll pane */
+.scroll-area {
+    -fx-background-color: #162447;
+}
+.label-history {
+    -fx-font-weight: bold;
+    -fx-border-color: white;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 15;       /* لجعل الحواف كاملة مستديرة */
+    -fx-background-radius: 15;   /* نفس الشكل للـ background */
+    -fx-padding: 2 12;           /* قلل padding علشان النص يتوسط */
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;         /* نفس حجم النص في ComboBox */
+    -fx-min-height: 28px;        /* نفس ارتفاع ComboBox */
+    -fx-pref-height: 28px;
+    -fx-alignment: CENTER;       /* يجعل النص في منتصف الـ Label عمودياً */
+}
+
+/* ===================== SCROLL AREA ========================== */
+.scroll-pane,
+.scroll-pane .viewport,
+.scroll-area {
+    -fx-background-color: #162447;
+}
+
+/* ===================== STATUS LABEL ========================== */
+.status-label {
+    -fx-background-color: #162447;
+    -fx-text-fill: #FFFFFF !important;
+    -fx-background-radius: 6;
+    -fx-padding: 4 8;
+    -fx-font-weight: bold;
+}
+
+/* ===================== INPUTS ========================== */
+.input-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #BBBBBB;
+    -fx-prompt-text-fill: #BBBBBB;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 6 8;
+    -fx-font-weight: bold;
+}
+.input-field:hover {
+    -fx-background-color: #1F3B73;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ComboBox dropdown styling */
+.combo-box {
+    -fx-background-color: #162447;
+    -fx-border-color: white;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #BBBBBB;       /* changed back to gray */
+    -fx-prompt-text-fill: #BBBBBB; /* gray placeholder */
+}
+
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #BBBBBB;          /* items in dropdown remain white */
+
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #1F3B73; /* hover like Charity */
+}
+
+.combo-box .list-view {
+    -fx-background-color: #162447;
+}
+combo-box:hover{
+    -fx-background-color: #1F3B73;
 }

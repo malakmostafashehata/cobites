@@ -1,24 +1,12 @@
 package backend;
 
-import java.util.Collections;
-import java.util.List;
 
+// Admin class extends from User class
 public class Admin extends User {
 
-    public Admin(String username, String password, String name,String phone) {
-        super(username, password, name, "HQ", Role.ADMIN,phone );
+    // Constructor to create an Admin object
+    public Admin(String username, String password) {
+        super(username, password, "", "", Role.ADMIN, "");
     }
 
-    public void viewAllUsers(UserManager um) { System.out.println(um.getAllUsers()); }
-    public void viewAllOrders(OrderManager om) { System.out.println(om.getOrders()); }
-    public void viewAllComplaints(ComplaintManager cm) { System.out.println(cm.getComplaints()); }
-
-    public void notify(String message, NotificationManager nm){
-        nm.notifyAdmin(message);
-    }
-
-    @Override
-    protected List<Donation> getDonations() {
-        return Collections.emptyList(); // Admin ليس له تبرعات
-    }
 }

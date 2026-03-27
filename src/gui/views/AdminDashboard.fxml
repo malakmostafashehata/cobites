@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.controllers.AdminDashboardController"
+            stylesheets="@dashboard.css">
+
+    <!-- ===================== TOP BAR ===================== -->
+    <top>
+        <VBox spacing="10" styleClass="top-bar">
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="profile-bar">
+                <VBox spacing="2">
+                    <Label text="WELCOME TO COBITES" styleClass="welcome-label"/>
+                    <Label fx:id="adminNameLabel" text="Admin" styleClass="header-label"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnTopLogout" text="Logout" styleClass="btn-logout"/>
+                    <Button fx:id="btnExit" text="Exit" styleClass="btn-profile"/>
+                </HBox>
+            </HBox>
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+        </VBox>
+    </top>
+
+    <!-- ===================== LEFT SIDE BAR ===================== -->
+    <left>
+        <VBox styleClass="left-panel">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <VBox spacing="15" styleClass="filter-box">
+                <Button fx:id="btnUsers" text="Users" styleClass="side-btn"/>
+                <Button fx:id="btnDonations" text="Donations" styleClass="side-btn"/>
+                <Button fx:id="btnOrders" text="Orders" styleClass="side-btn"/>
+                <Button fx:id="btnStock" text="Stock" styleClass="side-btn"/>
+                <Button fx:id="btnComplaints" text="Complaints" styleClass="side-btn"/>
+                <Button fx:id="btnCharity" text="Charity" styleClass="side-btn"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- ===================== CENTER CONTENT ===================== -->
+    <center>
+        <StackPane styleClass="center-pane">
+
+            <!-- USERS Section -->
+            <VBox fx:id="usersSection" spacing="10" styleClass="section-pane">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Users" styleClass="section-title"/>
+
+                <TextField fx:id="txtSearchUsers" promptText="Search Users..." styleClass="input-field"/>
+                <ComboBox fx:id="cbUserRoleFilter" promptText="All" styleClass="input-field" />
+                </HBox>
+                <TableView fx:id="usersTable" styleClass="main-table" VBox.vgrow="ALWAYS"/>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnAddUser" text="Add" styleClass="btn-save"/>
+                    <Button fx:id="btnDeleteUser" text="Delete" styleClass="btn-logout"/>
+                    <Button fx:id="btnExportUsers" text="Export CSV" styleClass="btn-action"/>
+                </HBox>
+            </VBox>
+
+            <!-- DONATIONS Section -->
+            <VBox fx:id="donationsSection" spacing="10" visible="false" styleClass="section-pane">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Donations" styleClass="section-title"/>
+
+                <TextField fx:id="txtSearchDonations" promptText="Search Donations..." styleClass="input-field"/>
+                <ComboBox fx:id="cbDonationType" promptText="All" styleClass="input-field"/>
+                <DatePicker fx:id="DdatePicker" promptText="" styleClass="date-picker"/>
+                </HBox>
+
+                <TableView fx:id="donationsTable" styleClass="main-table" VBox.vgrow="ALWAYS"/>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnDeleteDonation" text="Delete" styleClass="btn-logout" />
+                    <Button fx:id="btnExportDonations" text="Export CSV" styleClass="btn-action"/>
+
+                </HBox>
+            </VBox>
+
+            <!-- ORDERS Section -->
+            <VBox fx:id="ordersSection" spacing="10" visible="false" styleClass="section-pane">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Orders" styleClass="section-title"/>
+
+                <TextField fx:id="txtSearchOrders" promptText="Search Orders..." styleClass="input-field"/>
+                <ComboBox fx:id="cbOrderStatus" promptText="All" styleClass="input-field"/>
+                    <DatePicker fx:id="OdatePicker" promptText="" styleClass="date-picker"/>
+                </HBox>
+
+                <TableView fx:id="ordersTable" styleClass="main-table" VBox.vgrow="ALWAYS"/>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnDeleteOrder" text="Delete" styleClass="btn-logout" />
+                    <Button fx:id="btnExportOrders" text="Export CSV" styleClass="btn-action"/>
+                </HBox>
+            </VBox>
+
+            <!-- STOCK Section -->
+            <VBox fx:id="stockSection" spacing="10" visible="false" styleClass="section-pane">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Stock" styleClass="section-title"/>
+
+                <TextField fx:id="txtSearchStock" promptText="Search Stock..." styleClass="input-field"/>
+                <ComboBox fx:id="cbStockQty" promptText="All" styleClass="input-field"/>
+                </HBox>
+
+                <TableView fx:id="stockTable" styleClass="main-table" VBox.vgrow="ALWAYS"/>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnExportStock" text="Export CSV" styleClass="btn-action"/>
+                </HBox>
+            </VBox>
+
+            <!-- COMPLAINTS Section -->
+            <VBox fx:id="complaintsSection" spacing="10" visible="false" styleClass="section-pane">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Complaints" styleClass="section-title"/>
+
+                <TextField fx:id="txtSearchComplaints" promptText="Search Complaints..." styleClass="input-field"/>
+                <ComboBox fx:id="cbComplaintStatus" promptText="Filter by Status" styleClass="input-field"/>
+                    <ComboBox fx:id="cbComplaintRoleFilter" promptText="Filter by Role" styleClass="input-field"/>
+
+                    <DatePicker fx:id="CdatePicker" promptText="" styleClass="date-picker"/>
+                </HBox>
+
+                <TableView fx:id="complaintsTable" styleClass="main-table" VBox.vgrow="ALWAYS"/>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnDeleteComplaint" text="Delete" styleClass="btn-logout"/>
+                    <Button fx:id="btnExportComplaints" text="Export CSV" styleClass="btn-action"/>
+                </HBox>
+
+            </VBox>
+            <!-- charity Section -->
+            <VBox fx:id="charitysSection" spacing="10" visible="false" styleClass="section-pane">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Charity" styleClass="section-title"/>
+
+                </HBox>
+
+                <TableView fx:id="charityTable" styleClass="main-table" VBox.vgrow="ALWAYS"/>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnDeleteCharity" text="Delete" styleClass="btn-logout"/>
+                    <Button fx:id="btnExportcharity" text="Export CSV" styleClass="btn-action"/>
+                </HBox>
+
+            </VBox>
+
+
+        </StackPane>
+    </center>
+</BorderPane>

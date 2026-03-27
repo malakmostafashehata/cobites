@@ -1,1 +1,9 @@
-PersonVolunteer|rokaay|33|mostafa|rrr|33
+Delivery|mennatallah@gmail.com|3333|menna abdrahman|shorok building 4 first floor|01452578674
+HotelVolunteer|nawaraelnagar@gmail.com|8888|nawara elangar|madeint nasr building 4 ninth floor|Hotel|01356434545
+Charity|abeerhassan@gmail.coom|1305|abeer hassan|39 hassan radwan buiding one  first four|01205353555|8327786|accepted
+Charity|mokadarsh@gmail.com|5555|mokamostafa|obor building 5 first floor|01576476383|3764764|append
+Charity|mayashehta@gmail.com|5555|moak|tagmoa bulding 6|01435565444|tagmoa bulding 6|append
+Charity|marwanmostafa@gmail.com|4444|marwan mostafa|tagmoaa building 9 first floor|01274040305|6666666|accepted
+RestaurantVolunteer|rokayaayman@gmail.com|0502|rokaya ayman|rehab bulding 3 fourth floor|Restaurant|01234598756
+PersonVolunteer|malakmostafa@gmail.com|7777|Malak mostafa|sherton building 6 first floor|01274040304
+Delivery|mayamostafa@gmail.com|6666|maya shehata|korba building 8 sixth floor|01068000800

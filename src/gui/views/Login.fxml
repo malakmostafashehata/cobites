@@ -31,15 +31,18 @@
 
                 <TextField fx:id="usernameField" promptText="Username" maxWidth="300"/>
                 <PasswordField fx:id="passwordField" promptText="Password" maxWidth="300"/>
+                <Hyperlink fx:id="btnForgotPassword" text="Forgot Password?" style="-fx-background-color: transparent; -fx-text-fill: #054561;" />
 
                 <Button fx:id="loginButton" text="Login" maxWidth="150"
                         style="-fx-background-color: #054561; -fx-text-fill: white; -fx-font-weight: bold;" />
 
-                <Label fx:id="errorLabel" textFill="red" style="-fx-font-size: 14px;" />
+                <Label fx:id="errorLabel" textFill="red" style="-fx-font-size: 14px;"/>
 
                 <HBox alignment="CENTER" spacing="5">
-                    <Label text="Don't have an account?" />
-                    <Hyperlink fx:id="registerLink" text="Register here" />
+                    <Label text="Don't have an account?"/>
+                    <Hyperlink fx:id="registerLink" text="Register here"
+                               style="-fx-text-fill: #054561;" />
+
                 </HBox>
 
             </VBox>

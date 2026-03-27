@@ -6,84 +6,45 @@
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="gui.controllers.DonationFormController"
       spacing="15" alignment="TOP_CENTER"
-      style="-fx-padding: 20; -fx-background-color: #162447; -fx-background: 10;"
+      styleClass="donation-form"
       stylesheets="@dashboard.css">
 
     <!-- Title -->
-    <Label fx:id="lblTitle"
-           text="Add New Donation"
-           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
-
+    <Label fx:id="lblTitle" text="Add New Donation" styleClass="form-title"/>
 
     <!-- FORM GRID -->
-    <GridPane hgap="15" vgap="12">
+    <GridPane hgap="15" vgap="12" styleClass="form-grid">
 
         <!-- Name -->
-        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"
-               style="-fx-text-fill: white;"/>
-        <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"
-                   style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8;
-                          -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC;
-                          -fx-background-color: transparent;"/>
-        <Label fx:id="errName" textFill="red"
-               GridPane.rowIndex="0" GridPane.columnIndex="2"
-               style="-fx-text-fill: white;"/>
+        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="form-label"/>
+        <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="form-input"/>
+        <Label fx:id="errName" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="form-error"/>
 
         <!-- Quantity -->
-        <Label text="Quantity:" GridPane.rowIndex="1" GridPane.columnIndex="0"
-               style="-fx-text-fill: white;"/>
-        <TextField fx:id="txtQty" GridPane.rowIndex="1" GridPane.columnIndex="1"
-                   style="-fx-border-color: white; -fx-border-radius: 8; -fx-background-radius: 8;
-                          -fx-text-fill: white; -fx-prompt-text-fill: #CCCCCC;
-                          -fx-background-color: transparent;"/>
-        <Label fx:id="errQty" textFill="red"
-               GridPane.rowIndex="1" GridPane.columnIndex="2"
-               style="-fx-text-fill: white;"/>
+        <Label text="Quantity:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="form-label"/>
+        <TextField fx:id="txtQty" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="form-input"/>
+        <Label fx:id="errQty" GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="form-error"/>
 
         <!-- Type -->
-        <Label text="Type:" GridPane.rowIndex="2" GridPane.columnIndex="0"
-               style="-fx-text-fill: white;"/>
-        <ComboBox fx:id="cmbType" GridPane.rowIndex="2" GridPane.columnIndex="1"
-                  promptText="Type"
-                  prefWidth="150"
-                  style="-fx-background-color: #162447;
-                 -fx-border-color: white;
-                 -fx-border-width: 1;
-                 -fx-border-radius: 12;
-                 -fx-background-radius: 12;
-                 -fx-text-fill: white;
-                 -fx-prompt-text-fill: white;
-                 -fx-padding: 0 10 0 10;">
-        </ComboBox>
-
-
-
+        <Label text="Type:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="form-label"/>
+        <ComboBox fx:id="cmbType" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="150" styleClass="form-combo"/>
 
         <!-- Image -->
-        <Label text="Image:" GridPane.rowIndex="3" GridPane.columnIndex="0"
-               style="-fx-text-fill: white;"/>
+        <Label text="Image:" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="form-label"/>
         <HBox spacing="10" GridPane.rowIndex="3" GridPane.columnIndex="1">
-            <Button fx:id="btnBrowse" text="Browse"
-                    style="-fx-background-color: #162447; -fx-text-fill: white;
-                           -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
-            <Label fx:id="lblImage" text="No file chosen"
-                   style="-fx-text-fill: white;"/>
+            <Button fx:id="btnBrowse" text="Browse" styleClass="btn-action"/>
+            <Label fx:id="lblImage" text="No file chosen" styleClass="form-label"/>
         </HBox>
 
     </GridPane>
 
     <!-- Status Label -->
-    <Label fx:id="lblStatus" text=""
-           style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+    <Label fx:id="lblStatus" text="" style="-fx-text-fill: red; -fx-font-weight: bold;"/>
 
     <!-- Buttons -->
     <HBox spacing="20" alignment="CENTER">
-        <Button fx:id="btnSubmit" text="Submit"
-                style="-fx-background-color: #162447; -fx-text-fill: white;
-                       -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
-        <Button fx:id="btnCancel" text="Cancel"
-                style="-fx-background-color: #162447; -fx-text-fill: white;
-                       -fx-border-color: white; -fx-background-radius: 8; -fx-border-radius: 8;"/>
+        <Button fx:id="btnSubmit" text="Submit" styleClass="btn-action"/>
+        <Button fx:id="btnCancel" text="Cancel" styleClass="btn-action"/>
     </HBox>
 
 </VBox>

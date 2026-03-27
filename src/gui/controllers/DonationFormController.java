@@ -1,9 +1,10 @@
-
 package gui.controllers;
 
 import backend.*;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -18,27 +19,23 @@ public class DonationFormController {
     @FXML private Label lblImage;
     @FXML private Button btnSubmit;
     @FXML private Button btnCancel;
-
     @FXML private Label errName;
     @FXML private Label errQty;
     @FXML private Label lblStatus;
-    @FXML private Label lblTitle; // dynamic title
+    @FXML private Label lblTitle;
 
     private Volunteer volunteer;
-    private NotificationManager notificationManager;
-    private FoodItem existingItem; // for edit mode
+
+    private FoodItem existingItem;
     private String imagePath = "";
 
-    // Initialize the form with data
-    public void initData(Volunteer v, NotificationManager nm, FoodItem item){
-        this.volunteer = v;
-        this.notificationManager = nm;
+    public void initData(Volunteer volunteer, FoodItem item){
+        this.volunteer = volunteer;
         this.existingItem = item;
 
         cmbType.getItems().addAll(FoodType.values());
         cmbType.getSelectionModel().selectFirst();
 
-        // If editing, populate existing data
         if(existingItem != null){
             txtName.setText(existingItem.getName());
             txtQty.setText(String.valueOf(existingItem.getQty()));
@@ -47,125 +44,190 @@ public class DonationFormController {
             imagePath = existingItem.getImagePath();
         }
 
-        // Clear status label when opening
         lblStatus.setText("");
-
-        // Set dynamic title
         setEditMode(existingItem != null);
 
-        // Button actions
         btnBrowse.setOnAction(e -> chooseImage());
         btnCancel.setOnAction(e -> closeForm());
         btnSubmit.setOnAction(e -> submitDonation());
     }
 
-    // Choose image for donation
-    private void chooseImage(){
+    private void chooseImage() {
         FileChooser fc = new FileChooser();
         fc.setTitle("Select Donation Image");
         fc.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg")
+            new FileChooser.ExtensionFilter("Images", ".png", ".jpg", "*.jpeg")
         );
 
         File file = fc.showOpenDialog(null);
-        if(file != null){
-            imagePath = file.getAbsolutePath();
+        if (file != null) {
+            imagePath = file.getAbsolutePath();  
             lblImage.setText(file.getName());
         }
     }
 
-    // Submit new or edited donation
-    private void submitDonation(){
+    private void submitDonation() {
         clearErrors();
-        lblStatus.setText("");
+        lblStatus.setText(""); // Clear previous messages
 
         String name = txtName.getText().trim();
         String qtyStr = txtQty.getText().trim();
-
         boolean valid = true;
         int qty = 0;
 
-        if(name.isEmpty()){
-            errName.setText("Name is required.");
+        // 1️⃣ Validate name first
+        if (name.isEmpty()) {
+            lblStatus.setText("Name is required.");
+            valid = false;
+        } else if (!name.matches("[a-zA-Z]+")) {
+            lblStatus.setText("Name must contain only letters.");
             valid = false;
         }
 
-        try {
-            qty = Integer.parseInt(qtyStr);
-            if(qty <= 0){
-                errQty.setText("Quantity must be > 0.");
+        // 2️⃣ Validate quantity next
+        if (valid) { // Only check quantity if name is valid
+            try {
+                qty = Integer.parseInt(qtyStr);
+                if (qty <= 0) {
+                    lblStatus.setText("Quantity must be greater than 0.");
+                    valid = false;
+                }
+            } catch (Exception e) {
+                lblStatus.setText("Enter a valid number.");
                 valid = false;
             }
-        } catch(Exception e){
-            errQty.setText("Enter a valid number.");
-            valid = false;
         }
 
-        if(cmbType.getValue() == null){
-            lblStatus.setStyle("-fx-text-fill: red;");
+        // Validate food type
+        if (valid && cmbType.getValue() == null) {
             lblStatus.setText("Please select a type.");
             valid = false;
         }
 
-        if(!valid) return;
+        if (!valid) return;
 
-        if(existingItem == null){
-            // Add new donation
-            FoodItem item = new FoodItem(
-                    java.util.UUID.randomUUID().toString(),
-                    name,
-                    qty,
-                    volunteer.getName(),
-                    cmbType.getValue(),
-                    imagePath,
-                    java.time.LocalDate.now()
-            );
+        final String finalName = name;
+        final int finalQty = qty;
+        final FoodType finalType = cmbType.getValue();
+        final String finalImagePath = imagePath;
 
-            Donation donation = new Donation(
-                    java.util.UUID.randomUUID().toString(),
-                    item,
-                    volunteer,
-                    java.time.LocalDate.now()
-            );
-
-            volunteer.addDonation(donation);
-            FileManager.saveDonation(donation);
-            notificationManager.add("New donation from " + volunteer.getName() + " Type: " + cmbType.getValue());
-        } else {
-            // Edit existing donation in memory
-            existingItem.setName(name);
-            existingItem.setQty(qty);
-            existingItem.setType(cmbType.getValue());
-            existingItem.setImagePath(imagePath);
-
-            // Save the updated donation
-            Donation donationToSave = new Donation(existingItem.getId(), existingItem, volunteer, existingItem.getDonationDate());
-            FileManager.updateDonation(donationToSave);
-
-            notificationManager.add("Donation updated for " + volunteer.getName());
-        }
-
-        lblStatus.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
-        lblStatus.setText(existingItem == null ? "Donation submitted successfully!" : "Donation updated successfully!");
-
-        Stage stage = (Stage) btnSubmit.getScene().getWindow();
-        stage.close();
+        showConfirmationDialog(finalName, finalQty, finalType, finalImagePath);
     }
 
-    // Clear validation errors
+
+
+
+    private void showConfirmationDialog(String name, int qty, FoodType type, String imagePath) {
+        VBox content = new VBox(10);
+        content.setPadding(new Insets(15));
+        content.setStyle("-fx-background-color: #162447;"); // dark background
+
+        // Title
+        Label lblHeader = new Label("Confirm your donation");
+        lblHeader.setStyle("-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: white;");
+
+        // Donation details
+        Label lblName = new Label("Name: " + name);
+        Label lblQty = new Label("Quantity: " + qty);
+        Label lblType = new Label("Type: " + type.name());
+        lblName.setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+        lblQty.setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+        lblType.setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+
+        // Warning
+        Label lblWarning = new Label("Once added, it cannot be changed or deleted.");
+        lblWarning.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+
+        content.getChildren().addAll(lblHeader, lblName, lblQty, lblType, lblWarning);
+
+        // Create Alert
+        Alert alert = new Alert(Alert.AlertType.NONE); // use NONE to fully customize buttons
+        alert.setTitle("Confirm Donation");
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        alert.getDialogPane().setContent(content);
+
+        // Set dark background for entire dialog (including button area)
+        alert.getDialogPane().setStyle("-fx-background-color: #162447;");
+
+        // Create Yes / No buttons
+        ButtonType yesButtonType = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType noButtonType = new ButtonType("No", ButtonBar.ButtonData.NO);
+        alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+        // Style buttons
+        Button btnYes = (Button) alert.getDialogPane().lookupButton(yesButtonType);
+        Button btnNo = (Button) alert.getDialogPane().lookupButton(noButtonType);
+
+        String btnStyle = "-fx-background-color: #162447; -fx-text-fill: white; " +
+                "-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: white; -fx-border-width: 1.5;" +
+                "-fx-font-weight: bold";
+        String btnHover = "-fx-background-color: #1F3B73; -fx-text-fill: white; " +
+                "-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: white; -fx-border-width: 1.5;" +
+                "-f-font-weight: bold";
+
+        btnYes.setStyle(btnStyle);
+        btnNo.setStyle(btnStyle);
+
+        btnYes.setOnMouseEntered(e -> btnYes.setStyle(btnHover));
+        btnYes.setOnMouseExited(e -> btnYes.setStyle(btnStyle));
+
+        btnNo.setOnMouseEntered(e -> btnNo.setStyle(btnHover));
+        btnNo.setOnMouseExited(e -> btnNo.setStyle(btnStyle));
+
+        // Show alert and handle response
+        alert.showAndWait().ifPresent(response -> {
+        	if (response == yesButtonType) {
+
+        	    String id = java.util.UUID.randomUUID().toString().substring(0, 8);
+
+        	    FoodItem item = new FoodItem(
+        	        id,
+        	        name,
+        	        qty,
+        	        volunteer.getName(),
+        	        type,
+        	        imagePath,
+        	        java.time.LocalDate.now()
+        	    );
+
+        	    Donation donation = new Donation(
+        	        java.util.UUID.randomUUID().toString().substring(0, 8),
+        	        item,
+        	        volunteer,
+        	        null,
+        	        java.time.LocalDate.now()
+        	    );
+        	    item.setDonorAddress(volunteer.getAddress());
+        	    item.setDonorPhone(volunteer.getPhone());
+
+        	    donation.setDonorPhone(volunteer.getPhone());
+
+        	    FileManager.saveDonation(donation);
+
+
+        	    volunteer.addDonation(donation);
+
+        	    Stage stage = (Stage) btnSubmit.getScene().getWindow();
+        	    stage.close();
+        	}
+
+        });
+
+    }
+
+
     private void clearErrors(){
         errName.setText("");
         errQty.setText("");
     }
 
-    // Close form
     private void closeForm(){
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
 
-    // Set dynamic title
-    public void setEditMode(boolean isEdit) {
+    public void setEditMode(boolean isEdit){
         lblTitle.setText(isEdit ? "Edit Donation" : "Add New Donation");
     }
 }

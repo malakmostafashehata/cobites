@@ -1,0 +1,11 @@
+1765892122081|PersonVolunteer|malakmostafa@gmail.com|food damged|2025-12-16|Answered
+1765909561273|PersonVolunteer|malakmostafa@gmail.com|thanks you|2025-12-16|Pending
+1765909666092|Charity|marwan shehata|thank you|2025-12-16|Pending
+1765909767602|DeliveryPerson|mayamostafa@gmail.com|thank you|2025-12-16|Pending
+1765914147116|PersonVolunteer|malakmostafa@gmail.com|thank you|2025-12-16|Pending
+1765914271532|PersonVolunteer|malakmostafa@gmail.com|thank you|2025-12-16|Pending
+1765914480574|PersonVolunteer|malakmostafa@gmail.com|thank you|2025-12-16|Pending
+1765914581524|Charity|marwan mostafa|thank you|2025-12-16|Pending
+1765916119281|Charity|marwan shehata|thank you|2025-12-16|Pending
+1765917522670|DeliveryPerson|mayamostafa@gmail.com|thank you|2025-12-16|Pending
+1765917677997|DeliveryPerson|mayamostafa@gmail.com|thank you|2025-12-16|Pending

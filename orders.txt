@@ -1,0 +1,12 @@
+63013473|abeerhassan@gmail.coom|pizza|2|2025-12-04|39 hassan radwan buiding one  first four|sherton building 6 first floor|01205353555|01274040304|malakmostafa@gmail.com|Pending
+88323656|abeerhassan@gmail.coom|coconatmilk|3|2025-12-13|39 hassan radwan buiding one  first four|madeint nasr building 4 ninth floor|01205353555|01356434545|nawaraelnagar@gmail.com|Pending
+48750097|marwanmostafa@gmail.com|burger|2|2025-12-10|tagmoaa building 9 eighth floor|sherton building 6 first floor|01274040305|01274040304|malakmostafa@gmail.com|Completed|mayamostafa@gmail.com
+44476890|marwanmostafa@gmail.com|mixjuices|1|2025-12-16|tagmoaa building 9 eighth floor|sherton building 6 first floor|01274040305|01274040304|malakmostafa@gmail.com|Completed|mayamostafa@gmail.com
+95470314|marwanmostafa@gmail.com|mixjuices|2|2025-12-04|tagmoaa building 9 eighth floor|sherton building 6 first floor|01274040305|01274040304|malakmostafa@gmail.com|Completed|mayamostafa@gmail.com
+91209355|marwanmostafa@gmail.com|waraaanib|2|2025-12-16|tagmoaa building 9 eighth floor|rehab bulding 3 fourth floor|01274040305|01234598756|rokayaayman@gmail.com|Completed|mayamostafa@gmail.com
+54733359|marwanmostafa@gmail.com|milk|2|2025-12-03|tagmoaa building 9 eighth floor|sherton building 6 first floor|01274040305|01274040304|malakmostafa@gmail.com|Completed|mayamostafa@gmail.com
+88233017|marwanmostafa@gmail.com|donats|2|2025-12-16|tagmoaa building 9 eighth floor|madeint nasr building 4 ninth floor|01274040305|01356434545|nawaraelnagar@gmail.com|Pending|Unknown
+46987817|marwanmostafa@gmail.com|pizza|1|2025-12-12|tagmoaa building 9 eighth floor|sherton building 6 first floor|01274040305|01274040304|malakmostafa@gmail.com|Pending|Unknown
+81234568|marwanmostafa@gmail.com|milk|2|2025-12-04|tagmoaa building 9 eighth floor|sherton building 6 first floor|01274040305|01274040304|malakmostafa@gmail.com|Pending|Unknown
+22885156|marwanmostafa@gmail.com|pizza|2|2025-12-07|tagmoaa building 9 eighth floor|sherton building 6 first floor|01274040305|01274040304|malakmostafa@gmail.com|Pending|Unknown
+50403905|marwanmostafa@gmail.com|coconatmilk|1|2025-12-16|tagmoaa building 9 eighth floor|madeint nasr building 4 ninth floor|01274040305|01356434545|nawaraelnagar@gmail.com|Pending|Unknown

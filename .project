@@ -16,14 +16,19 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>resources/images/login.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/LOQ/Downloads/last/cobites/resources/images/login.jpeg</location>
+		</link>
+		<link>
 			<name>src/gui/views/Login.fxml</name>
 			<type>1</type>
-			<location>C:/Users/LOQ/eclipse-workspace/cobites/src/gui/views/Login.fxml</location>
+			<location>C:/Users/LOQ/Downloads/last/cobites/src/gui/views/Login.fxml</location>
 		</link>
 		<link>
 			<name>src/gui/views/welcome.fxml</name>
 			<type>1</type>
-			<location>C:/Users/LOQ/eclipse-workspace/cobites/src/gui/views/welcome.fxml</location>
+			<location>C:/Users/LOQ/Downloads/last/cobites/src/gui/views/welcome.fxml</location>
 		</link>
 	</linkedResources>
 </projectDescription>

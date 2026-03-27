@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
@@ -13,79 +14,127 @@
         <VBox spacing="10" styleClass="top-bar">
             <HBox spacing="10" alignment="CENTER_LEFT" styleClass="profile-bar">
 
+                <!-- Left: Volunteer Info -->
                 <VBox spacing="2">
-                    <Label fx:id="lblWelcome" text="WELCOME TO COBITES" styleClass="welcome-label"/>
-                    <Label fx:id="lblVolunteerName" text="Volunteer Name" styleClass="header-label"/>
+                    <Label fx:id="lblWelcome"
+                           text="WELCOME TO COBITES"
+                           styleClass="welcome-label"/>
+
+                    <GridPane hgap="10">
+                        <Label text="Volunteer" styleClass="header-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="lblVolunteerName" text="Volunteer Name" styleClass="header-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    </GridPane>
                 </VBox>
 
                 <Region HBox.hgrow="ALWAYS"/>
 
-               <HBox spacing="10" alignment="CENTER_RIGHT">
-
-    <Button fx:id="btnEditProfile"
-            text=" Profile"
-            style="-fx-background-color:#162447 ;  -fx-font-weight: bold;-fx-text-fill: white ;
-                    "/>
-
-    <Button fx:id="btnLogout"
-            text="Logout"
-            style="-fx-background-color: #c0392b; -fx-text-fill: white;
-                   -fx-background-radius: 5; -fx-padding: 5 12;"/>
-
-</HBox>
-
-                <!-- Exit button -->
-                <Button fx:id="btnExit" text="Exit" styleClass="btn-red"/>
+                <!-- Right Buttons -->
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnEditProfile" text="Profile" styleClass="btn-profile"/>
+                    <Button fx:id="btnLogout" text="Logout" styleClass="btn-logout"/>
+                    <Button fx:id="btnExit" text="Exit" styleClass="btn-profile"/>
+                </HBox>
             </HBox>
 
-            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
         </VBox>
     </top>
 
-
-    <!-- ===================== LEFT FILTER PANEL ===================== -->
+    <!-- ===================== LEFT SIDE BAR ===================== -->
     <left>
-        <!-- NEW OUTER PANEL -->
         <VBox styleClass="left-panel">
-            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
 
-            <!-- INNER FILTER BOX -->
             <VBox spacing="15" styleClass="filter-box">
-
-                <Label text="Search / Filter" styleClass="filter-title"/>
-
-                <TextField fx:id="txtSearch" promptText="Search donations..." styleClass="input-field"/>
-
-                <ComboBox fx:id="cbTypeFilter" promptText="Select type" styleClass="input-field"/>
-
-                <HBox spacing="10">
-                    <Button fx:id="btnRefresh" text="Refresh" styleClass="btn-blue"/>
-                    <Button fx:id="btnExportCSV" text="Export CSV" styleClass="btn-orange" onAction="#exportCsv"/>
-                </HBox>
-
+                <Button fx:id="btnDonations" text="Donations" styleClass="side-btn"/>
+                <Button fx:id="btnComplaints" text="Complaints" styleClass="side-btn"/>
             </VBox>
         </VBox>
     </left>
 
-
-    <!-- ===================== CENTER CARDS ===================== -->
+    <!-- ===================== CENTER CONTENT ===================== -->
     <center>
-        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
-            <VBox fx:id="cardsContainer" spacing="15">
-                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
-            </VBox>
-        </ScrollPane>
-    </center>
+        <StackPane styleClass="center-pane" style="-fx-padding: 15;">
 
+            <!-- ================= DONATIONS SECTION ================= -->
+            <VBox fx:id="donationsSection" spacing="10" styleClass="section-pane">
+
+                <!-- Title + Filters -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Donations" styleClass="section-title"/>
+
+                    <TextField fx:id="txtSearch" promptText="Search donations..." styleClass="input-field"/>
+
+                    <ComboBox fx:id="cbTypeFilter" prefWidth="150" promptText="Select Type" styleClass="input-field"/>
+
+                    <ComboBox fx:id="cbHistoryFilter" prefWidth="150" promptText="Status" styleClass="input-field"/>
+                </HBox>
+
+                <!-- Cards + Export Button -->
+                <VBox spacing="10" VBox.vgrow="ALWAYS">
+
+                    <!-- Cards -->
+                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS" styleClass="scroll">
+
+                        <FlowPane fx:id="donationsCardsContainer" hgap="15" vgap="15" styleClass="cards-container"/>
+                    </ScrollPane>
+
+                    <!-- Export bottom-right -->
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button fx:id="btnExportCSV" text="Export CSV" styleClass="btn-submit"/>
+                    </HBox>
+
+                </VBox>
+            </VBox>
+
+            <!-- ================= COMPLAINTS SECTION ================= -->
+            <VBox fx:id="complaintsSection" spacing="10" styleClass="section-pane" visible="false">
+
+                <Label text="Submit Complaint" styleClass="section-title"/>
+
+                <TextArea fx:id="txtComplaintDesc" promptText="Describe your complaint..." prefHeight="150"/>
+
+                <Button fx:id="btnSubmitComplaint" text="Submit Complaint" styleClass="btn-submit"/>
+            </VBox>
+
+            <!-- ================= PROFILE SECTION ================= -->
+            <VBox fx:id="profileSection" spacing="10" styleClass="section-pane" visible="false">
+
+                <Label text="Profile" styleClass="section-title"/>
+
+                <Label text="Full Name" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtProfileName" promptText="Name"/>
+
+                <Label text="Password" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="txtProfilePassword" promptText="Password"/>
+
+                <Label text="Address" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtProfileAddress" promptText="Address"/>
+
+                <Label text="Phone" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtProfilePhone" promptText="Phone"/>
+
+                <!-- Buttons -->
+                <HBox spacing="10">
+                    <Button fx:id="btnSaveProfile" text="Save" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 5 15;"/>
+                    <Button fx:id="btnDeleteProfile" text="Delete Account" styleClass="btn-logout"/>
+                </HBox>
+            </VBox>
+
+        </StackPane>
+    </center>
 
     <!-- ===================== BOTTOM PANEL ===================== -->
     <bottom>
         <HBox fx:id="bottomPanel" spacing="10" alignment="CENTER_LEFT">
-            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
             <Label fx:id="statusLabel" text="READY" styleClass="status-label"/>
 
-            <Region HBox.hgrow="ALWAYS"/> <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
 
             <Button fx:id="btnAddDonation" text="Add Donation" styleClass="btn-green"/>
         </HBox>

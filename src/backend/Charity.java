@@ -1,30 +1,47 @@
 package backend;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Charity extends User {
-    private List<Order> orders = new ArrayList<>();
 
-    public Charity(String userName, String password, String name, String address,String phone ) {
+    private String code;       
+    private String reviewStatus; 
+
+    public Charity(String userName, String password, String name, String address, String phone, String code) {
         super(userName, password, name, address, Role.CHARITY, phone);
+        this.code = code;
+        this.reviewStatus = "append";
     }
 
-    public void addOrder(Order order, NotificationManager nm) {
-        orders.add(order);
-        if(nm != null){
-            nm.notifyCharity(getName(), "Order " + order.getItemName() + " has been created.");
-            nm.notifyAdmin("New order " + order.getItemName() + " created by charity " + getName() + ".");
-        }
+    // ===== Getter & Setter =====
+
+    public String getCode() {
+        return code;
     }
 
-    public List<Order> getOrders() { 
-        return Collections.unmodifiableList(orders); 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getReviewStatus() {
+        return reviewStatus;
+    }
+
+    public void setReviewStatus(String reviewStatus) {
+        this.reviewStatus = reviewStatus;
     }
 
     @Override
-    protected List<Donation> getDonations() {
-        return Collections.emptyList();
+    public String getUserName() {
+        return userName;
+    }
+
+
+    @Override
+    public String getPhone() {
+        return phone;
+    }
+
+    @Override
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
